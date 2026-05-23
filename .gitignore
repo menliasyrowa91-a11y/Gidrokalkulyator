@@ -1,0 +1,8 @@
+node_modules/
+.npm/
+.cache/
+.codeoss/
+.gemini/
+.bash_history
+.git-credentials
+*.log

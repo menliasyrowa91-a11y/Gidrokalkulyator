@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Gidrokalkulyator",
+    "slug": "idro-calc-new",
+    "version": "1.0.0",
+    "android": {
+      "package": "com.menli.pero270591"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bb9e898f-278c-4b8a-b657-2d08aff6df46"
+      }
+    }
+  }
+}
