@@ -4,7 +4,16 @@
     "slug": "idro-calc-new",
     "version": "1.0.0",
     "android": {
-      "package": "com.menli.pero270591"
+      "package": "com.menli.pero270591",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ]
+    },
+    "ios": {
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Bu programma meýdan ölçemek üçin ýeriňizi kesgitlemeli."
+      }
     },
     "extra": {
       "eas": {
@@ -12,7 +21,13 @@
       }
     },
     "plugins": [
-      "expo-asset"
+      "expo-asset",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Programma meýdan ölçemek üçin ýeriňizi bilmeli."
+        }
+      ]
     ]
   }
 }
