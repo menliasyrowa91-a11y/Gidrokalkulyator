@@ -1,15 +1,18 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { EkinBazasy } from './Ekinder';
 
-export const hasaplaSuwarysh = (meýdan, ekinKey, Q_m3s) => {
-  const ekin = EkinBazasy[ekinKey];
-  const Q_litr = Q_m3s * 1000; // m³/s -> litr/s
-  const jemiSuw = meýdan * ekin.norma; // Jemi gerek suw (m³)
-  const sekundSany = (jemiSuw * 1000) / (Q_litr * ekin.kpd);
-  
-  const sagat = (sekundSany / 3600).toFixed(1);
-  return {
-    sagat: sagat,
-    gerekliSuw: jemiSuw.toFixed(0),
-    ekinAdy: ekin.ady
-  };
-};
+export default function SuwaryshPlan() {
+  const [meýdan, setMeýdan] = useState('10');
+  const [Q, setQ] = useState('0.15');
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Suwaryş Meýilnamasy</Text>
+      <TextInput style={styles.input} placeholder="Meýdan (ga)" value={meýdan} onChangeText={setMeýdan} keyboardType="numeric" />
+      <TextInput style={styles.input} placeholder="Suw akymy (m³/s)" value={Q} onChangeText={setQ} keyboardType="numeric" />
+      <Text style={styles.info}>Ekin saýlaň we netijäni görüň...</Text>
+    </View>
+  );
+}
+// styles...
