@@ -1,39 +1,27 @@
 {
   "expo": {
-    "name": "Gidrokalkulyator",
-    "slug": "idro-calc-new",
+    "name": "Gidrokalkulýator",
+    "slug": "gidro-kalkulyator",
     "version": "1.0.0",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "android": {
-      "package": "com.menli.pero270591",
-      "permissions": [
-        "ACCESS_FINE_LOCATION",
-        "ACCESS_COARSE_LOCATION"
-      ]
-    },
     "ios": {
-      "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "Bu programma meýdan ölçemek üçin ýeriňizi kesgitlemeli."
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#ffffff"
       }
     },
-    "extra": {
-      "eas": {
-        "projectId": "bb9e898f-278c-4b8a-b657-2d08aff6df46"
-      }
-    },
-    "plugins": [
-      "expo-asset",
-      [
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission": "Programma meýdan ölçemek üçin ýeriňizi bilmeli."
-        }
-      ]
-    ]
+    "web": {
+      "favicon": "./assets/icon.png"
+    }
   }
 }
