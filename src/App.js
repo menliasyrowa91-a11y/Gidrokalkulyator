@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Image, SafeAreaView, StatusBar } from 'react-native';
-import GpsCalculator from './GpsCalculator';
-import DeryaGidrawlika from './DeryaGidrawlika';
-import YapGidrawlika from './YapGidrawlika';
-import SuwaryshPlan from './SuwaryshPlan';
+import GpsCalculator from './src/GpsCalculator';
+import DeryaGidrawlika from './src/DeryaGidrawlika';
+import YapGidrawlika from './src/YapGidrawlika';
+import SuwaryshPlan from './src/SuwaryshPlan';
 
-// Ikonkany import edýäris (assets papkaňdaky ýeriňi barla)
-const myIcon = require('../assets/icon.png'); 
+// SDK 52-de assets ýollaryna üns beriň
+const myIcon = require('./assets/icon.png'); 
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('GPS');
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       
-      {/* 1. Ikonka ýerleşýän ýokarky bölek */}
+      {/* Header */}
       <View style={styles.header}>
         <Image source={myIcon} style={styles.logo} />
         <Text style={styles.title}>Gidrokalkulýator</Text>
       </View>
 
-      {/* 2. Sazlamalar paneli */}
+      {/* Tab Bar */}
       <View style={styles.tabBar}>
         <TabButton title="GPS" active={activeTab === 'GPS'} onPress={() => setActiveTab('GPS')} />
         <TabButton title="Derýa" active={activeTab === 'Derya'} onPress={() => setActiveTab('Derya')} />
@@ -29,7 +29,7 @@ export default function App() {
         <TabButton title="Suwaryş" active={activeTab === 'Suw'} onPress={() => setActiveTab('Suw')} />
       </View>
 
-      {/* 3. Mazmun bölümi */}
+      {/* Content */}
       <View style={styles.content}>
         {activeTab === 'GPS' && <GpsCalculator />}
         {activeTab === 'Derya' && <DeryaGidrawlika />}
@@ -41,7 +41,11 @@ export default function App() {
 }
 
 const TabButton = ({ title, active, onPress }) => (
-  <TouchableOpacity style={[styles.tab, active && styles.activeTab]} onPress={onPress}>
+  <TouchableOpacity 
+    style={[styles.tab, active && styles.activeTab]} 
+    onPress={onPress}
+    activeOpacity={0.7}
+  >
     <Text style={[styles.tabText, active && styles.activeTabText]}>{title}</Text>
   </TouchableOpacity>
 );
@@ -53,14 +57,16 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     justifyContent: 'center', 
     padding: 15, 
-    backgroundColor: '#fff' 
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderColor: '#eee'
   },
   logo: { width: 40, height: 40, marginRight: 10, resizeMode: 'contain' },
-  title: { fontSize: 18, fontWeight: 'bold', color: '#1e3a8a' },
-  tabBar: { flexDirection: 'row', backgroundColor: '#fff', padding: 5, borderBottomWidth: 1, borderColor: '#ddd' },
-  tab: { flex: 1, padding: 8, alignItems: 'center' },
+  title: { fontSize: 18, fontWeight: '700', color: '#1e3a8a' },
+  tabBar: { flexDirection: 'row', backgroundColor: '#fff', padding: 5 },
+  tab: { flex: 1, paddingVertical: 10, alignItems: 'center' },
   activeTab: { backgroundColor: '#059669', borderRadius: 8 },
-  tabText: { color: '#333', fontSize: 12 },
+  tabText: { color: '#64748b', fontSize: 13, fontWeight: '500' },
   activeTabText: { color: '#fff', fontWeight: 'bold' },
   content: { flex: 1 }
 });
