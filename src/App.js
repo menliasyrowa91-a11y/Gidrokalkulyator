@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Image, SafeAreaView, StatusBar } from 'react-native';
-import GpsCalculator from './src/GpsCalculator';
-import DeryaGidrawlika from './src/DeryaGidrawlika';
-import YapGidrawlika from './src/YapGidrawlika';
-import SuwaryshPlan from './src/SuwaryshPlan';
 
-// SDK 52-de assets ýollaryna üns beriň
-const myIcon = require('./assets/icon.png'); 
+// Faýllaryňyz hemme zat src/ papkasynyň içinde ýerleşýär
+import GpsCalculator from './GpsCalculator';
+import DeryaGidrawlika from './DeryaGidrawlika';
+import YapGidrawlika from './YapGidrawlika';
+import SuwaryshPlan from './SuwaryshPlan';
+
+// App.js src/ içinde bolany üçin, assets-e çykmak üçin ../ ulanyň
+const myIcon = require('../assets/icon.png'); 
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('GPS');
