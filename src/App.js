@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Image, SafeAreaView, StatusBar } from 'react-native';
 
-// Faýllaryňyz hemme zat src/ papkasynyň içinde ýerleşýär
+// Faýllaryňyz hemme zat src/ papkasynyň içinde bolany üçin:
 import GpsCalculator from './GpsCalculator';
 import DeryaGidrawlika from './DeryaGidrawlika';
 import YapGidrawlika from './YapGidrawlika';
 import SuwaryshPlan from './SuwaryshPlan';
 
-// App.js src/ içinde bolany üçin, assets-e çykmak üçin ../ ulanyň
+// assets papkasy src-den daşarda bolany üçin, 
+// bir dereje ýokaryk çykmak üçin ../ ulanyň:
 const myIcon = require('../assets/icon.png'); 
 
 export default function App() {
