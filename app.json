@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Gidrokalkulýator",
-    "slug": "gidro-kalkulyator",
+    "slug": "hydro-calc-2026",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,7 +25,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "bb9e898f-278c-48ba-b657-2d88aff6df46"
+        "projectId": "6a8f1e5a-5b1c-4120-8f5a-dbe8c8682b76"
       }
     }
   }
