@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Gidrokalkulýator",
-    "slug": "gidro-kalkulyator",
+    "slug": "Gidrokalkulyator",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,7 +25,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "6a8f1e5a-5b1c-4120-8f5a-dbe8c8682b76"
+        "projectId": "96d13864-51ec-43ae-9710-33bf5c905c85"
       }
     }
   }
