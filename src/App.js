@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Image, SafeAreaView, StatusBar } from 'react-native';
 
-// Faýllaryňyz hemme zat src/ papkasynyň içinde bolany üçin:
+// Importlary barladyň: şol faýllaryň her birinde "export default function..." bar bolmaly
 import GpsCalculator from './GpsCalculator';
 import DeryaGidrawlika from './DeryaGidrawlika';
 import YapGidrawlika from './YapGidrawlika';
 import SuwaryshPlan from './SuwaryshPlan';
 
-// assets papkasy src-den daşarda bolany üçin, 
-// bir dereje ýokaryk çykmak üçin ../ ulanyň:
+// Ikonkany beýleki usul bilen çagyrýarys, bu Android üçin has durnukly
 const myIcon = require('../assets/icon.png'); 
 
 export default function App() {
@@ -64,11 +63,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#eee'
   },
-  logo: { width: 40, height: 40, marginRight: 10, resizeMode: 'contain' },
+  logo: { width: 40, height: 40, marginRight: 10 },
   title: { fontSize: 18, fontWeight: '700', color: '#1e3a8a' },
   tabBar: { flexDirection: 'row', backgroundColor: '#fff', padding: 5 },
-  tab: { flex: 1, paddingVertical: 10, alignItems: 'center' },
-  activeTab: { backgroundColor: '#059669', borderRadius: 8 },
+  tab: { flex: 1, paddingVertical: 10, alignItems: 'center', borderRadius: 8 },
+  activeTab: { backgroundColor: '#059669' },
   tabText: { color: '#64748b', fontSize: 13, fontWeight: '500' },
   activeTabText: { color: '#fff', fontWeight: 'bold' },
   content: { flex: 1 }
