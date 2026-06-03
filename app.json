@@ -19,8 +19,20 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.menli.gidrokalkulyator"
+      "package": "com.menli.gidrokalkulyator",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ]
     },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysPermission": "Programma suwaryş meýdanlaryny ölçemek üçin ýerleşýän ýeriňizi ulanýar."
+        }
+      ]
+    ],
     "web": {
       "favicon": "./assets/icon.png"
     },
