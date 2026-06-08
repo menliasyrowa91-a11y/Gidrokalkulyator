@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView, Alert, TouchableOpacity } from 'react-native';
-import { EkinBazasy } from './Ekinder';
+// FAÝL ADYNY DÜZETDIM: ./Ekinder -> ./EkinBazasy
+import { EkinBazasy } from './EkinBazasy';
 
 export default function SuwaryshPlan() {
   const [meýdan, setMeýdan] = useState('10');
   const [Q, setQ] = useState('0.15');
-  const [selectedEkin, setSelectedEkin] = useState('gowaca'); // Default ekin
+  const [selectedEkin, setSelectedEkin] = useState('gowaca'); 
 
   const calculatePlan = () => {
     const valM = parseFloat(meýdan);
@@ -17,8 +18,7 @@ export default function SuwaryshPlan() {
       return;
     }
 
-    // Hasaplaýyş: t = (meýdan * norma) / (Q * 3600 * kpd)
-    // Norma m³/ga hasaplanýar
+    // Hasaplaýyş
     const t = (valM * ekin.norma) / (valQ * 3600 * ekin.kpd);
     
     Alert.alert("Netije", `${ekin.ady} üçin suwaryş wagty: ${t.toFixed(1)} sagat`);
@@ -36,7 +36,9 @@ export default function SuwaryshPlan() {
             style={[styles.ekinButton, selectedEkin === key && styles.activeEkin]} 
             onPress={() => setSelectedEkin(key)}
           >
-            <Text style={styles.ekinText}>{EkinBazasy[key].ady}</Text>
+            <Text style={[styles.ekinText, selectedEkin === key && {color: '#fff'}]}>
+                {EkinBazasy[key].ady}
+            </Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
   title: { fontSize: 20, fontWeight: 'bold', marginBottom: 15, textAlign: 'center' },
   label: { fontSize: 16, marginBottom: 10 },
   ekinContainer: { flexDirection: 'row', flexWrap: 'wrap', marginBottom: 20 },
-  ekinButton: { padding: 8, backgroundColor: '#e2e8f0', margin: 4, borderRadius: 5 },
+  ekinButton: { padding: 10, backgroundColor: '#e2e8f0', margin: 4, borderRadius: 5 },
   activeEkin: { backgroundColor: '#059669' },
   ekinText: { fontSize: 14 },
   input: { borderBottomWidth: 1, marginBottom: 15, padding: 8, fontSize: 16, borderColor: '#ccc' },
