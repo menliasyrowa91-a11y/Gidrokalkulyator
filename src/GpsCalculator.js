@@ -5,7 +5,6 @@ import * as Location from 'expo-location';
 export default function GpsCalculator() {
   const [points, setPoints] = useState([]);
 
-  // Programma açylanda GPS rugsady
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -17,19 +16,26 @@ export default function GpsCalculator() {
 
   const addPoint = async () => {
     try {
+      // Accuracy-ni "Balanced" edip üýtgetdik, bu köp telefonlarda durnukly işleýär
       let loc = await Location.getCurrentPositionAsync({ 
-        accuracy: Location.Accuracy.BestForNavigation 
+        accuracy: Location.Accuracy.Balanced 
       });
       
-      // GPS takyklygyny barlamak
-      if (loc.coords.accuracy > 15) {
-        Alert.alert("Üns beriň", `Signalyň takyklygy biraz pes: ${loc.coords.accuracy.toFixed(1)}m. Ýene garaşyň ýa-da arassalaň.`);
+      // "Null" barlagy (programmanyň ýapylyp galmagynyň öňüni alýar)
+      if (!loc || !loc.coords) {
+        Alert.alert("Ýalňyşlyk", "GPS maglumaty alynmady, ýene synanyşyň.");
+        return;
+      }
+      
+      // Takyklyk barlagy
+      if (loc.coords.accuracy > 50) {
+        Alert.alert("Üns beriň", `Takyklyk biraz pes: ${loc.coords.accuracy.toFixed(1)}m.`);
       }
       
       setPoints(prev => [...prev, loc.coords]);
       Alert.alert("Nokat goşuldy", `Takyklyk: ${loc.coords.accuracy.toFixed(1)}m`);
     } catch (error) {
-      Alert.alert("Ýalňyşlyk", "Ýerleşýän ýeriňiz tapylmady. GPS açykmy?");
+      Alert.alert("Ýalňyşlyk", "GPS signal tapylmady. Açyk meýdanda bolmagyňyz maslahat berilýär.");
     }
   };
 
@@ -39,7 +45,7 @@ export default function GpsCalculator() {
       return;
     }
 
-    const R = 6378137; // Ýeriň radiusy
+    const R = 6378137; 
     let area = 0;
 
     for (let i = 0; i < points.length; i++) {
@@ -50,7 +56,6 @@ export default function GpsCalculator() {
 
     area = Math.abs(area * R * R / 2.0);
     
-    // Gektar we Sotuk hasaby (1 gektar = 100 sotuk)
     const ga = (area / 10000).toFixed(4);
     const sotuk = (area / 100).toFixed(2);
 
