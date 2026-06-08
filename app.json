@@ -5,26 +5,13 @@
     "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
     "android": {
       "jsEngine": "jsc",
+      "package": "com.menli.gidrokalkulyator3",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.menli.gidrokalkulyator3",
-      "permissions": [
-        "ACCESS_FINE_LOCATION",
-        "ACCESS_COARSE_LOCATION"
-      ]
+      }
     },
     "plugins": [
       [
@@ -33,14 +20,6 @@
           "locationAlwaysPermission": "Programma suwaryş meýdanlaryny ölçemek üçin ýerleşýän ýeriňizi ulanýar."
         }
       ]
-    ],
-    "web": {
-      "favicon": "./assets/icon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "96d13864-51ec-43ae-9710-33bf5c905c85"
-      }
-    }
+    ]
   }
 }
