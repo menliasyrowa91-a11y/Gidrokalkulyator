@@ -5,7 +5,7 @@ import * as Location from 'expo-location';
 export default function GpsCalculator() {
   const [points, setPoints] = useState([]);
 
-  // Programma açylanda rugsat soramak
+  // Programma açylanda GPS rugsady
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -20,6 +20,12 @@ export default function GpsCalculator() {
       let loc = await Location.getCurrentPositionAsync({ 
         accuracy: Location.Accuracy.BestForNavigation 
       });
+      
+      // GPS takyklygyny barlamak
+      if (loc.coords.accuracy > 15) {
+        Alert.alert("Üns beriň", `Signalyň takyklygy biraz pes: ${loc.coords.accuracy.toFixed(1)}m. Ýene garaşyň ýa-da arassalaň.`);
+      }
+      
       setPoints(prev => [...prev, loc.coords]);
       Alert.alert("Nokat goşuldy", `Takyklyk: ${loc.coords.accuracy.toFixed(1)}m`);
     } catch (error) {
@@ -29,11 +35,11 @@ export default function GpsCalculator() {
 
   const calculatePreciseArea = () => {
     if (points.length < 3) {
-      Alert.alert("Ýalňyşlyk", "Azyndan 3 nokat gerek!");
+      Alert.alert("Ýalňyşlyk", "Azyndan 3 nokat goşuň!");
       return;
     }
 
-    const R = 6378137; 
+    const R = 6378137; // Ýeriň radiusy
     let area = 0;
 
     for (let i = 0; i < points.length; i++) {
@@ -43,20 +49,33 @@ export default function GpsCalculator() {
     }
 
     area = Math.abs(area * R * R / 2.0);
+    
+    // Gektar we Sotuk hasaby (1 gektar = 100 sotuk)
     const ga = (area / 10000).toFixed(4);
-    Alert.alert("Netije", `Meýdan: ${ga} gektar (${area.toFixed(2)} m²)`);
+    const sotuk = (area / 100).toFixed(2);
+
+    Alert.alert(
+      "Ölçeýşiň Netijesi", 
+      `Meýdan:\n\n${ga} gektar\n${sotuk} sotuk\n(${area.toFixed(0)} m²)`
+    );
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.buttonContainer}><Button title="Nokat Goş" onPress={addPoint} /></View>
-      <View style={styles.buttonContainer}><Button title="Takyk Hasapla" onPress={calculatePreciseArea} color="green" /></View>
-      <View style={styles.buttonContainer}><Button title="Arassala" onPress={() => setPoints([])} color="red" /></View>
+      <View style={styles.buttonContainer}>
+        <Button title="Nokat Goş" onPress={addPoint} />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button title="Takyk Hasapla" onPress={calculatePreciseArea} color="green" />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button title="Arassala" onPress={() => setPoints([])} color="red" />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({ 
   container: { padding: 20 },
-  buttonContainer: { marginVertical: 5 }
+  buttonContainer: { marginVertical: 8 }
 });
