@@ -5,7 +5,7 @@ import GpsCalculator from './GpsCalculator';
 import DeryaGidrawlika from './DeryaGidrawlika';
 import YapGidrawlika from './YapGidrawlika';
 import SuwaryshPlan from './SuwaryshPlan';
-import Wodosliw from './Wodosliw'; // Täze goşulan faýl
+import Wodosliw from './Wodosliw'; 
 
 const myIcon = require('../assets/icon.png'); 
 
@@ -21,8 +21,13 @@ export default function App() {
         <Image source={myIcon} style={styles.logo} />
         <Text style={styles.title}>Gidrokalkulýator</Text>
       </View>
+      
+      {/* Düzüji maglumaty */}
+      <View style={styles.authorContainer}>
+        <Text style={styles.authorText}>Düzüji: Meňli Aşyrowa</Text>
+      </View>
 
-      {/* Tab Bar (Wodosliw goşuldy) */}
+      {/* Tab Bar */}
       <View style={styles.tabBar}>
         <TabButton title="GPS" active={activeTab === 'GPS'} onPress={() => setActiveTab('GPS')} />
         <TabButton title="Derýa" active={activeTab === 'Derya'} onPress={() => setActiveTab('Derya')} />
@@ -64,12 +69,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#eee'
   },
+  authorContainer: { backgroundColor: '#fff', alignItems: 'center', paddingBottom: 5 },
+  authorText: { fontSize: 10, color: '#94a3b8', fontStyle: 'italic' },
   logo: { width: 40, height: 40, marginRight: 10 },
   title: { fontSize: 18, fontWeight: '700', color: '#1e3a8a' },
-  tabBar: { flexDirection: 'row', backgroundColor: '#fff', padding: 5, flexWrap: 'wrap' }, // flexWrap goşuldy
+  tabBar: { flexDirection: 'row', backgroundColor: '#fff', padding: 5, flexWrap: 'wrap' },
   tab: { flex: 1, paddingVertical: 10, alignItems: 'center', borderRadius: 8, minWidth: '20%' },
   activeTab: { backgroundColor: '#059669' },
-  tabText: { color: '#64748b', fontSize: 11, fontWeight: '500' }, // Şrift biraz kiçeldildi
+  tabText: { color: '#64748b', fontSize: 11, fontWeight: '500' },
   activeTabText: { color: '#fff', fontWeight: 'bold' },
   content: { flex: 1 }
 });
