@@ -6,6 +6,7 @@ import DeryaGidrawlika from './DeryaGidrawlika';
 import YapGidrawlika from './YapGidrawlika';
 import SuwaryshPlan from './SuwaryshPlan';
 import Wodosliw from './Wodosliw'; 
+import Wodosliw from './EkinBazasy.js'; 
 
 const myIcon = require('../assets/icon.png'); 
 
