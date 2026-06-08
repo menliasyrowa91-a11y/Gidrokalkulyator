@@ -6,7 +6,7 @@ import DeryaGidrawlika from './DeryaGidrawlika';
 import YapGidrawlika from './YapGidrawlika';
 import SuwaryshPlan from './SuwaryshPlan';
 import Wodosliw from './Wodosliw'; 
-import EkinBazasy from './EkinBazasy'; // Düzedildi
+import EkinBazasy from './EkinBazasy'; 
 
 const myIcon = require('../assets/icon.png'); 
 
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   logo: { width: 40, height: 40, marginRight: 10 },
   title: { fontSize: 18, fontWeight: '700', color: '#1e3a8a' },
   tabBar: { flexDirection: 'row', backgroundColor: '#fff', padding: 5, flexWrap: 'wrap' },
-  tab: { flex: 1, paddingVertical: 10, alignItems: 'center', borderRadius: 8, minWidth: '30%' }, // minWidth kiçeldildi, tablar sygar ýaly
+  tab: { flex: 1, paddingVertical: 10, alignItems: 'center', borderRadius: 8, minWidth: '30%' },
   activeTab: { backgroundColor: '#059669' },
   tabText: { color: '#64748b', fontSize: 11, fontWeight: '500' },
   activeTabText: { color: '#fff', fontWeight: 'bold' },
