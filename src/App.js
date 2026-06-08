@@ -6,7 +6,7 @@ import DeryaGidrawlika from './DeryaGidrawlika';
 import YapGidrawlika from './YapGidrawlika';
 import SuwaryshPlan from './SuwaryshPlan';
 import Wodosliw from './Wodosliw'; 
-import Wodosliw from './EkinBazasy.js'; 
+import EkinBazasy from './EkinBazasy'; // Düzedildi
 
 const myIcon = require('../assets/icon.png'); 
 
@@ -35,6 +35,7 @@ export default function App() {
         <TabButton title="Ýap" active={activeTab === 'Yap'} onPress={() => setActiveTab('Yap')} />
         <TabButton title="Suwaryş" active={activeTab === 'Suw'} onPress={() => setActiveTab('Suw')} />
         <TabButton title="Wodosliw" active={activeTab === 'Wodosliw'} onPress={() => setActiveTab('Wodosliw')} />
+        <TabButton title="Ekin" active={activeTab === 'Ekin'} onPress={() => setActiveTab('Ekin')} />
       </View>
 
       {/* Content */}
@@ -44,6 +45,7 @@ export default function App() {
         {activeTab === 'Yap' && <YapGidrawlika />}
         {activeTab === 'Suw' && <SuwaryshPlan />}
         {activeTab === 'Wodosliw' && <Wodosliw />}
+        {activeTab === 'Ekin' && <EkinBazasy />}
       </View>
     </SafeAreaView>
   );
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
   logo: { width: 40, height: 40, marginRight: 10 },
   title: { fontSize: 18, fontWeight: '700', color: '#1e3a8a' },
   tabBar: { flexDirection: 'row', backgroundColor: '#fff', padding: 5, flexWrap: 'wrap' },
-  tab: { flex: 1, paddingVertical: 10, alignItems: 'center', borderRadius: 8, minWidth: '20%' },
+  tab: { flex: 1, paddingVertical: 10, alignItems: 'center', borderRadius: 8, minWidth: '30%' }, // minWidth kiçeldildi, tablar sygar ýaly
   activeTab: { backgroundColor: '#059669' },
   tabText: { color: '#64748b', fontSize: 11, fontWeight: '500' },
   activeTabText: { color: '#fff', fontWeight: 'bold' },
