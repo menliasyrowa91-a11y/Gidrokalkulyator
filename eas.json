@@ -18,10 +18,8 @@
       "autoIncrement": true,
       "android": {
         "buildType": "apk"
-      }
+      },
+      "resourceClass": "medium" 
     }
-  },
-  "submit": {
-    "production": {}
   }
 }
