@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, Image, SafeAreaView, StatusBar } from 'react-native';
+import React, { useState, Suspense, lazy } from 'react';
+import { View, StyleSheet, TouchableOpacity, Text, Image, SafeAreaView, StatusBar, ActivityIndicator } from 'react-native';
 
-import GpsCalculator from './GpsCalculator';
-import DeryaGidrawlika from './DeryaGidrawlika';
-import YapGidrawlika from './YapGidrawlika';
-import SuwaryshPlan from './SuwaryshPlan';
-import Wodosliw from './Wodosliw'; 
-import EkinBazasy from './EkinBazasy'; 
+const GpsCalculator = lazy(() => import('./GpsCalculator'));
+const DeryaGidrawlika = lazy(() => import('./DeryaGidrawlika'));
+const YapGidrawlika = lazy(() => import('./YapGidrawlika'));
+const SuwaryshPlan = lazy(() => import('./SuwaryshPlan'));
+const Wodosliw = lazy(() => import('./Wodosliw')); 
+const EkinBazasy = lazy(() => import('./EkinBazasy')); 
 
 const myIcon = require('../assets/icon.png'); 
 
@@ -40,12 +40,14 @@ export default function App() {
 
       {/* Content */}
       <View style={styles.content}>
-        {activeTab === 'GPS' && <GpsCalculator />}
-        {activeTab === 'Derya' && <DeryaGidrawlika />}
-        {activeTab === 'Yap' && <YapGidrawlika />}
-        {activeTab === 'Suw' && <SuwaryshPlan />}
-        {activeTab === 'Wodosliw' && <Wodosliw />}
-        {activeTab === 'Ekin' && <EkinBazasy />}
+        <Suspense fallback={<ActivityIndicator size="large" color="#059669" style={{marginTop: 50}} />}>
+          {activeTab === 'GPS' && <GpsCalculator />}
+          {activeTab === 'Derya' && <DeryaGidrawlika />}
+          {activeTab === 'Yap' && <YapGidrawlika />}
+          {activeTab === 'Suw' && <SuwaryshPlan />}
+          {activeTab === 'Wodosliw' && <Wodosliw />}
+          {activeTab === 'Ekin' && <EkinBazasy />}
+        </Suspense>
       </View>
     </SafeAreaView>
   );
